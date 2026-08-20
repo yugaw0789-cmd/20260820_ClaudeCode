@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>シンプルタイマー</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏱️</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <h1 class="title">⏱️ シンプルタイマー</h1>
+
+  <div class="dial">
+    <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+      <circle class="ring-bg" cx="100" cy="100" r="92"></circle>
+      <circle class="ring-fg" cx="100" cy="100" r="92"></circle>
+    </svg>
+    <div class="readout">
+      <output id="display" class="display" aria-live="off">05:00</output>
+      <span id="status" class="status">停止中</span>
+    </div>
+  </div>
+
+  <div class="inputs">
+    <label>
+      <span>時</span>
+      <input id="hours" type="number" min="0" max="99" value="0" inputmode="numeric">
+    </label>
+    <label>
+      <span>分</span>
+      <input id="minutes" type="number" min="0" max="59" value="5" inputmode="numeric">
+    </label>
+    <label>
+      <span>秒</span>
+      <input id="seconds" type="number" min="0" max="59" value="0" inputmode="numeric">
+    </label>
+  </div>
+
+  <div class="presets">
+    <button class="preset" data-seconds="60" type="button">1分</button>
+    <button class="preset" data-seconds="180" type="button">3分</button>
+    <button class="preset" data-seconds="300" type="button">5分</button>
+    <button class="preset" data-seconds="600" type="button">10分</button>
+    <button class="preset" data-seconds="1500" type="button">25分</button>
+  </div>
+
+  <div class="controls">
+    <button id="startPause" class="btn btn-primary" type="button">スタート</button>
+    <button id="reset" class="btn" type="button">リセット</button>
+  </div>
+
+  <p class="hint">スペースキーで開始 / 一時停止、R キーでリセット</p>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
