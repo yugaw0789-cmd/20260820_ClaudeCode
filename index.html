@@ -11,6 +11,13 @@
 <main class="app">
   <h1 class="title">⏱️ シンプルタイマー</h1>
 
+  <div class="mode-tabs" role="tablist" aria-label="機能を選択">
+    <button class="mode-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="timer-panel" data-mode="timer">タイマー</button>
+    <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="stopwatch-panel" data-mode="stopwatch">ストップウォッチ</button>
+    <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="clock-panel" data-mode="clock">時計</button>
+  </div>
+
+  <section id="timer-panel" class="mode-panel" role="tabpanel">
   <div class="dial">
     <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
       <circle class="ring-bg" cx="100" cy="100" r="92"></circle>
@@ -51,6 +58,29 @@
   </div>
 
   <p class="hint">スペースキーで開始 / 一時停止、R キーでリセット</p>
+  </section>
+
+  <section id="stopwatch-panel" class="mode-panel" role="tabpanel" hidden>
+    <div class="stopwatch-readout">
+      <output id="stopwatchDisplay" class="stopwatch-display" aria-live="off">00:00.00</output>
+      <span id="stopwatchStatus" class="status">停止中</span>
+    </div>
+    <div class="controls">
+      <button id="stopwatchStartPause" class="btn btn-primary" type="button">スタート</button>
+      <button id="stopwatchLap" class="btn" type="button">ラップ</button>
+      <button id="stopwatchReset" class="btn" type="button">リセット</button>
+    </div>
+    <ol id="laps" class="laps" aria-label="ラップタイム"></ol>
+    <p class="hint">スペースキーで開始 / 一時停止、R キーでリセット</p>
+  </section>
+
+  <section id="clock-panel" class="mode-panel" role="tabpanel" hidden>
+    <div class="clock-readout">
+      <time id="clockDisplay" class="clock-display">00:00:00</time>
+      <time id="clockDate" class="clock-date">----</time>
+    </div>
+    <p class="hint">端末のローカル時刻を表示しています</p>
+  </section>
 </main>
 
 <script src="script.js"></script>

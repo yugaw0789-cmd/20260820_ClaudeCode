@@ -11,6 +11,16 @@
     minutes: document.getElementById('minutes'),
     seconds: document.getElementById('seconds'),
   };
+  const modeTabs = document.querySelectorAll('.mode-tab');
+  const panels = document.querySelectorAll('.mode-panel');
+  const stopwatchDisplay = document.getElementById('stopwatchDisplay');
+  const stopwatchStatus = document.getElementById('stopwatchStatus');
+  const stopwatchStartPauseBtn = document.getElementById('stopwatchStartPause');
+  const stopwatchLapBtn = document.getElementById('stopwatchLap');
+  const stopwatchResetBtn = document.getElementById('stopwatchReset');
+  const laps = document.getElementById('laps');
+  const clockDisplay = document.getElementById('clockDisplay');
+  const clockDate = document.getElementById('clockDate');
 
   const CIRCUMFERENCE = 2 * Math.PI * 92;
   ring.style.strokeDasharray = CIRCUMFERENCE;
@@ -20,6 +30,13 @@
   let deadline = 0;     // 動作中の終了時刻 (performance.now 基準)
   let timerId = null;
   let running = false;
+  let activeMode = 'timer';
+  let stopwatchElapsedMs = 0;
+  let stopwatchStartedAt = 0;
+  let stopwatchTimerId = null;
+  let stopwatchRunning = false;
+  let lapCount = 0;
+  let clockTimerId = null;
 
   const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 
@@ -53,7 +70,9 @@
     const text = format(remainingMs);
     display.textContent = text;
     display.classList.toggle('is-long', text.length > 5);
-    document.title = running ? `${text} - シンプルタイマー` : 'シンプルタイマー';
+    if (activeMode === 'timer') {
+      document.title = running ? `${text} - シンプルタイマー` : 'シンプルタイマー';
+    }
     const ratio = totalMs > 0 ? clamp(remainingMs / totalMs, 0, 1) : 0;
     ring.style.strokeDashoffset = CIRCUMFERENCE * (1 - ratio);
   }
@@ -163,8 +182,113 @@
     }
   }
 
+  function formatStopwatch(ms) {
+    const centiseconds = Math.floor(ms / 10) % 100;
+    const seconds = Math.floor(ms / 1000) % 60;
+    const minutes = Math.floor(ms / 60000) % 60;
+    const hours = Math.floor(ms / 3600000);
+    const pad = (n) => String(n).padStart(2, '0');
+    return hours > 0
+      ? `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(centiseconds)}`
+      : `${pad(minutes)}:${pad(seconds)}.${pad(centiseconds)}`;
+  }
+
+  function stopwatchCurrentMs() {
+    return stopwatchRunning
+      ? stopwatchElapsedMs + performance.now() - stopwatchStartedAt
+      : stopwatchElapsedMs;
+  }
+
+  function renderStopwatch() {
+    stopwatchDisplay.textContent = formatStopwatch(stopwatchCurrentMs());
+  }
+
+  function tickStopwatch() {
+    renderStopwatch();
+  }
+
+  function startStopwatch() {
+    if (stopwatchRunning) return;
+    stopwatchRunning = true;
+    stopwatchStartedAt = performance.now();
+    stopwatchStartPauseBtn.textContent = '一時停止';
+    stopwatchStatus.textContent = '計測中';
+    stopwatchTimerId = setInterval(tickStopwatch, 10);
+  }
+
+  function pauseStopwatch() {
+    if (!stopwatchRunning) return;
+    stopwatchElapsedMs = stopwatchCurrentMs();
+    stopwatchRunning = false;
+    clearInterval(stopwatchTimerId);
+    stopwatchTimerId = null;
+    stopwatchStartPauseBtn.textContent = '再開';
+    stopwatchStatus.textContent = '一時停止中';
+    renderStopwatch();
+  }
+
+  function recordLap() {
+    if (!stopwatchRunning) return;
+    const item = document.createElement('li');
+    const label = document.createElement('span');
+    const time = document.createElement('time');
+    lapCount += 1;
+    label.textContent = `ラップ ${lapCount}`;
+    time.textContent = formatStopwatch(stopwatchCurrentMs());
+    item.append(label, time);
+    laps.prepend(item);
+  }
+
+  function resetStopwatch() {
+    clearInterval(stopwatchTimerId);
+    stopwatchTimerId = null;
+    stopwatchRunning = false;
+    stopwatchElapsedMs = 0;
+    lapCount = 0;
+    laps.replaceChildren();
+    stopwatchStartPauseBtn.textContent = 'スタート';
+    stopwatchStatus.textContent = '停止中';
+    renderStopwatch();
+  }
+
+  function renderClock() {
+    const now = new Date();
+    clockDisplay.textContent = new Intl.DateTimeFormat('ja-JP', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+    }).format(now);
+    clockDate.textContent = new Intl.DateTimeFormat('ja-JP', {
+      year: 'numeric', month: 'long', day: 'numeric', weekday: 'short',
+    }).format(now);
+  }
+
+  function setMode(mode) {
+    activeMode = mode;
+    modeTabs.forEach((tab) => {
+      const selected = tab.dataset.mode === mode;
+      tab.classList.toggle('is-active', selected);
+      tab.setAttribute('aria-selected', String(selected));
+    });
+    panels.forEach((panel) => { panel.hidden = panel.id !== `${mode}-panel`; });
+    clearInterval(clockTimerId);
+    clockTimerId = null;
+    if (mode === 'clock') {
+      renderClock();
+      clockTimerId = setInterval(renderClock, 1000);
+      document.title = '時計 - シンプルタイマー';
+    } else if (mode === 'stopwatch') {
+      renderStopwatch();
+      document.title = 'ストップウォッチ - シンプルタイマー';
+    } else {
+      render();
+    }
+  }
+
   startPauseBtn.addEventListener('click', () => (running ? pause() : start()));
   resetBtn.addEventListener('click', reset);
+  stopwatchStartPauseBtn.addEventListener('click', () => (stopwatchRunning ? pauseStopwatch() : startStopwatch()));
+  stopwatchLapBtn.addEventListener('click', recordLap);
+  stopwatchResetBtn.addEventListener('click', resetStopwatch);
+  modeTabs.forEach((tab) => tab.addEventListener('click', () => setMode(tab.dataset.mode)));
 
   Object.values(inputs).forEach((el) => {
     el.addEventListener('change', () => {
@@ -184,11 +308,17 @@
     const typing = e.target instanceof HTMLInputElement;
     if (e.code === 'Space' && !typing) {
       e.preventDefault();
-      running ? pause() : start();
+      if (activeMode === 'timer') {
+        running ? pause() : start();
+      } else if (activeMode === 'stopwatch') {
+        stopwatchRunning ? pauseStopwatch() : startStopwatch();
+      }
     } else if ((e.key === 'r' || e.key === 'R') && !typing) {
-      reset();
+      if (activeMode === 'timer') reset();
+      if (activeMode === 'stopwatch') resetStopwatch();
     }
   });
 
   reset();
+  renderStopwatch();
 })();
