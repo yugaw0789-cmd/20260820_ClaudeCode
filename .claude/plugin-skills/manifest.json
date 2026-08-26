@@ -1,0 +1,599 @@
+{
+  "upstream": {
+    "repository": "anthropics/claude-plugins-official",
+    "url": "https://github.com/anthropics/claude-plugins-official",
+    "ref": "main",
+    "commit": "b819188d2eea14e0400556ca29dbd1179a7c595b",
+    "license": "Apache-2.0"
+  },
+  "generator": "tools/plugins_to_skills.py",
+  "counts": {
+    "skill": 31,
+    "command": 30,
+    "agent": 31
+  },
+  "vendored_plugins": [
+    "agent-sdk-dev",
+    "asana",
+    "claude-code-setup",
+    "claude-md-management",
+    "claude-security",
+    "code-modernization",
+    "code-review",
+    "code-simplifier",
+    "commit-commands",
+    "cwc-makers",
+    "discord",
+    "example-plugin",
+    "feature-dev",
+    "frontend-design",
+    "hookify",
+    "imessage",
+    "math-olympiad",
+    "mcp-server-dev",
+    "mcp-tunnels",
+    "playground",
+    "plugin-dev",
+    "pr-review-toolkit",
+    "project-artifact",
+    "ralph-loop",
+    "receipts",
+    "session-report",
+    "skill-creator",
+    "telegram"
+  ],
+  "skills": [
+    {
+      "skill": "agent-sdk-dev-agent-sdk-verifier-py",
+      "kind": "agent",
+      "plugin": "agent-sdk-dev",
+      "source": "plugins/agent-sdk-dev/agents/agent-sdk-verifier-py.md"
+    },
+    {
+      "skill": "agent-sdk-dev-agent-sdk-verifier-ts",
+      "kind": "agent",
+      "plugin": "agent-sdk-dev",
+      "source": "plugins/agent-sdk-dev/agents/agent-sdk-verifier-ts.md"
+    },
+    {
+      "skill": "agent-sdk-dev-new-sdk-app",
+      "kind": "command",
+      "plugin": "agent-sdk-dev",
+      "source": "plugins/agent-sdk-dev/commands/new-sdk-app.md"
+    },
+    {
+      "skill": "asana-asana-setup",
+      "kind": "command",
+      "plugin": "asana",
+      "source": "external_plugins/asana/commands/asana-setup.md"
+    },
+    {
+      "skill": "claude-code-setup-claude-automation-recommender",
+      "kind": "skill",
+      "plugin": "claude-code-setup",
+      "source": "plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md"
+    },
+    {
+      "skill": "claude-md-management-claude-md-improver",
+      "kind": "skill",
+      "plugin": "claude-md-management",
+      "source": "plugins/claude-md-management/skills/claude-md-improver/SKILL.md"
+    },
+    {
+      "skill": "claude-md-management-revise-claude-md",
+      "kind": "command",
+      "plugin": "claude-md-management",
+      "source": "plugins/claude-md-management/commands/revise-claude-md.md"
+    },
+    {
+      "skill": "claude-security",
+      "kind": "skill",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/skills/claude-security/SKILL.md"
+    },
+    {
+      "skill": "claude-security-agent",
+      "kind": "agent",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/agents/claude-security.md"
+    },
+    {
+      "skill": "claude-security-explore",
+      "kind": "agent",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/agents/explore.md"
+    },
+    {
+      "skill": "claude-security-patch-generator",
+      "kind": "agent",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/agents/patch-generator.md"
+    },
+    {
+      "skill": "claude-security-patch-verifier",
+      "kind": "agent",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/agents/patch-verifier.md"
+    },
+    {
+      "skill": "claude-security-scan-inventory",
+      "kind": "agent",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/agents/scan-inventory.md"
+    },
+    {
+      "skill": "claude-security-scan-researcher",
+      "kind": "agent",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/agents/scan-researcher.md"
+    },
+    {
+      "skill": "claude-security-scan-verifier",
+      "kind": "agent",
+      "plugin": "claude-security",
+      "source": "plugins/claude-security/agents/scan-verifier.md"
+    },
+    {
+      "skill": "code-modernization-architecture-critic",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/architecture-critic.md"
+    },
+    {
+      "skill": "code-modernization-business-rules-extractor",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/business-rules-extractor.md"
+    },
+    {
+      "skill": "code-modernization-legacy-analyst",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/legacy-analyst.md"
+    },
+    {
+      "skill": "code-modernization-modernize-assess",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-assess.md"
+    },
+    {
+      "skill": "code-modernization-modernize-brief",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-brief.md"
+    },
+    {
+      "skill": "code-modernization-modernize-extract-rules",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-extract-rules.md"
+    },
+    {
+      "skill": "code-modernization-modernize-harden",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-harden.md"
+    },
+    {
+      "skill": "code-modernization-modernize-map",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-map.md"
+    },
+    {
+      "skill": "code-modernization-modernize-preflight",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-preflight.md"
+    },
+    {
+      "skill": "code-modernization-modernize-reimagine",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-reimagine.md"
+    },
+    {
+      "skill": "code-modernization-modernize-status",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-status.md"
+    },
+    {
+      "skill": "code-modernization-modernize-transform",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-transform.md"
+    },
+    {
+      "skill": "code-modernization-modernize-uplift",
+      "kind": "command",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/commands/modernize-uplift.md"
+    },
+    {
+      "skill": "code-modernization-scaffolder",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/scaffolder.md"
+    },
+    {
+      "skill": "code-modernization-security-auditor",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/security-auditor.md"
+    },
+    {
+      "skill": "code-modernization-test-engineer",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/test-engineer.md"
+    },
+    {
+      "skill": "code-modernization-uplift-migrator",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/uplift-migrator.md"
+    },
+    {
+      "skill": "code-modernization-version-delta-analyst",
+      "kind": "agent",
+      "plugin": "code-modernization",
+      "source": "plugins/code-modernization/agents/version-delta-analyst.md"
+    },
+    {
+      "skill": "code-review",
+      "kind": "command",
+      "plugin": "code-review",
+      "source": "plugins/code-review/commands/code-review.md"
+    },
+    {
+      "skill": "code-simplifier",
+      "kind": "agent",
+      "plugin": "code-simplifier",
+      "source": "plugins/code-simplifier/agents/code-simplifier.md"
+    },
+    {
+      "skill": "commit-commands-clean-gone",
+      "kind": "command",
+      "plugin": "commit-commands",
+      "source": "plugins/commit-commands/commands/clean_gone.md"
+    },
+    {
+      "skill": "commit-commands-commit",
+      "kind": "command",
+      "plugin": "commit-commands",
+      "source": "plugins/commit-commands/commands/commit.md"
+    },
+    {
+      "skill": "commit-commands-commit-push-pr",
+      "kind": "command",
+      "plugin": "commit-commands",
+      "source": "plugins/commit-commands/commands/commit-push-pr.md"
+    },
+    {
+      "skill": "cwc-makers-cardputer-buddy",
+      "kind": "skill",
+      "plugin": "cwc-makers",
+      "source": "plugins/cwc-makers/skills/cardputer-buddy/SKILL.md"
+    },
+    {
+      "skill": "cwc-makers-m5-onboard",
+      "kind": "skill",
+      "plugin": "cwc-makers",
+      "source": "plugins/cwc-makers/skills/m5-onboard/SKILL.md"
+    },
+    {
+      "skill": "cwc-makers-maker-setup",
+      "kind": "command",
+      "plugin": "cwc-makers",
+      "source": "plugins/cwc-makers/commands/maker-setup.md"
+    },
+    {
+      "skill": "discord-access",
+      "kind": "skill",
+      "plugin": "discord",
+      "source": "external_plugins/discord/skills/access/SKILL.md"
+    },
+    {
+      "skill": "discord-configure",
+      "kind": "skill",
+      "plugin": "discord",
+      "source": "external_plugins/discord/skills/configure/SKILL.md"
+    },
+    {
+      "skill": "example-plugin-example-command",
+      "kind": "skill",
+      "plugin": "example-plugin",
+      "source": "plugins/example-plugin/skills/example-command/SKILL.md"
+    },
+    {
+      "skill": "example-plugin-example-command-cmd",
+      "kind": "command",
+      "plugin": "example-plugin",
+      "source": "plugins/example-plugin/commands/example-command.md"
+    },
+    {
+      "skill": "example-plugin-example-skill",
+      "kind": "skill",
+      "plugin": "example-plugin",
+      "source": "plugins/example-plugin/skills/example-skill/SKILL.md"
+    },
+    {
+      "skill": "feature-dev",
+      "kind": "command",
+      "plugin": "feature-dev",
+      "source": "plugins/feature-dev/commands/feature-dev.md"
+    },
+    {
+      "skill": "feature-dev-code-architect",
+      "kind": "agent",
+      "plugin": "feature-dev",
+      "source": "plugins/feature-dev/agents/code-architect.md"
+    },
+    {
+      "skill": "feature-dev-code-explorer",
+      "kind": "agent",
+      "plugin": "feature-dev",
+      "source": "plugins/feature-dev/agents/code-explorer.md"
+    },
+    {
+      "skill": "feature-dev-code-reviewer",
+      "kind": "agent",
+      "plugin": "feature-dev",
+      "source": "plugins/feature-dev/agents/code-reviewer.md"
+    },
+    {
+      "skill": "frontend-design",
+      "kind": "skill",
+      "plugin": "frontend-design",
+      "source": "plugins/frontend-design/skills/frontend-design/SKILL.md"
+    },
+    {
+      "skill": "hookify",
+      "kind": "command",
+      "plugin": "hookify",
+      "source": "plugins/hookify/commands/hookify.md"
+    },
+    {
+      "skill": "hookify-configure",
+      "kind": "command",
+      "plugin": "hookify",
+      "source": "plugins/hookify/commands/configure.md"
+    },
+    {
+      "skill": "hookify-conversation-analyzer",
+      "kind": "agent",
+      "plugin": "hookify",
+      "source": "plugins/hookify/agents/conversation-analyzer.md"
+    },
+    {
+      "skill": "hookify-help",
+      "kind": "command",
+      "plugin": "hookify",
+      "source": "plugins/hookify/commands/help.md"
+    },
+    {
+      "skill": "hookify-list",
+      "kind": "command",
+      "plugin": "hookify",
+      "source": "plugins/hookify/commands/list.md"
+    },
+    {
+      "skill": "hookify-writing-rules",
+      "kind": "skill",
+      "plugin": "hookify",
+      "source": "plugins/hookify/skills/writing-rules/SKILL.md"
+    },
+    {
+      "skill": "imessage-access",
+      "kind": "skill",
+      "plugin": "imessage",
+      "source": "external_plugins/imessage/skills/access/SKILL.md"
+    },
+    {
+      "skill": "imessage-configure",
+      "kind": "skill",
+      "plugin": "imessage",
+      "source": "external_plugins/imessage/skills/configure/SKILL.md"
+    },
+    {
+      "skill": "math-olympiad",
+      "kind": "skill",
+      "plugin": "math-olympiad",
+      "source": "plugins/math-olympiad/skills/math-olympiad/SKILL.md"
+    },
+    {
+      "skill": "mcp-server-dev-build-mcp-app",
+      "kind": "skill",
+      "plugin": "mcp-server-dev",
+      "source": "plugins/mcp-server-dev/skills/build-mcp-app/SKILL.md"
+    },
+    {
+      "skill": "mcp-server-dev-build-mcp-server",
+      "kind": "skill",
+      "plugin": "mcp-server-dev",
+      "source": "plugins/mcp-server-dev/skills/build-mcp-server/SKILL.md"
+    },
+    {
+      "skill": "mcp-server-dev-build-mcpb",
+      "kind": "skill",
+      "plugin": "mcp-server-dev",
+      "source": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md"
+    },
+    {
+      "skill": "mcp-tunnels-create-docker-mcp-tunnel",
+      "kind": "command",
+      "plugin": "mcp-tunnels",
+      "source": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md"
+    },
+    {
+      "skill": "playground",
+      "kind": "skill",
+      "plugin": "playground",
+      "source": "plugins/playground/skills/playground/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-agent-creator",
+      "kind": "agent",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/agents/agent-creator.md"
+    },
+    {
+      "skill": "plugin-dev-agent-development",
+      "kind": "skill",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/skills/agent-development/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-command-development",
+      "kind": "skill",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/skills/command-development/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-create-plugin",
+      "kind": "command",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/commands/create-plugin.md"
+    },
+    {
+      "skill": "plugin-dev-hook-development",
+      "kind": "skill",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/skills/hook-development/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-mcp-integration",
+      "kind": "skill",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/skills/mcp-integration/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-plugin-settings",
+      "kind": "skill",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/skills/plugin-settings/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-plugin-structure",
+      "kind": "skill",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/skills/plugin-structure/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-plugin-validator",
+      "kind": "agent",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/agents/plugin-validator.md"
+    },
+    {
+      "skill": "plugin-dev-skill-development",
+      "kind": "skill",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/skills/skill-development/SKILL.md"
+    },
+    {
+      "skill": "plugin-dev-skill-reviewer",
+      "kind": "agent",
+      "plugin": "plugin-dev",
+      "source": "plugins/plugin-dev/agents/skill-reviewer.md"
+    },
+    {
+      "skill": "pr-review-toolkit-code-reviewer",
+      "kind": "agent",
+      "plugin": "pr-review-toolkit",
+      "source": "plugins/pr-review-toolkit/agents/code-reviewer.md"
+    },
+    {
+      "skill": "pr-review-toolkit-code-simplifier",
+      "kind": "agent",
+      "plugin": "pr-review-toolkit",
+      "source": "plugins/pr-review-toolkit/agents/code-simplifier.md"
+    },
+    {
+      "skill": "pr-review-toolkit-comment-analyzer",
+      "kind": "agent",
+      "plugin": "pr-review-toolkit",
+      "source": "plugins/pr-review-toolkit/agents/comment-analyzer.md"
+    },
+    {
+      "skill": "pr-review-toolkit-pr-test-analyzer",
+      "kind": "agent",
+      "plugin": "pr-review-toolkit",
+      "source": "plugins/pr-review-toolkit/agents/pr-test-analyzer.md"
+    },
+    {
+      "skill": "pr-review-toolkit-review-pr",
+      "kind": "command",
+      "plugin": "pr-review-toolkit",
+      "source": "plugins/pr-review-toolkit/commands/review-pr.md"
+    },
+    {
+      "skill": "pr-review-toolkit-silent-failure-hunter",
+      "kind": "agent",
+      "plugin": "pr-review-toolkit",
+      "source": "plugins/pr-review-toolkit/agents/silent-failure-hunter.md"
+    },
+    {
+      "skill": "pr-review-toolkit-type-design-analyzer",
+      "kind": "agent",
+      "plugin": "pr-review-toolkit",
+      "source": "plugins/pr-review-toolkit/agents/type-design-analyzer.md"
+    },
+    {
+      "skill": "project-artifact",
+      "kind": "skill",
+      "plugin": "project-artifact",
+      "source": "plugins/project-artifact/skills/project-artifact/SKILL.md"
+    },
+    {
+      "skill": "ralph-loop",
+      "kind": "command",
+      "plugin": "ralph-loop",
+      "source": "plugins/ralph-loop/commands/ralph-loop.md"
+    },
+    {
+      "skill": "ralph-loop-cancel-ralph",
+      "kind": "command",
+      "plugin": "ralph-loop",
+      "source": "plugins/ralph-loop/commands/cancel-ralph.md"
+    },
+    {
+      "skill": "ralph-loop-help",
+      "kind": "command",
+      "plugin": "ralph-loop",
+      "source": "plugins/ralph-loop/commands/help.md"
+    },
+    {
+      "skill": "receipts",
+      "kind": "skill",
+      "plugin": "receipts",
+      "source": "plugins/receipts/skills/receipts/SKILL.md"
+    },
+    {
+      "skill": "session-report",
+      "kind": "skill",
+      "plugin": "session-report",
+      "source": "plugins/session-report/skills/session-report/SKILL.md"
+    },
+    {
+      "skill": "skill-creator",
+      "kind": "skill",
+      "plugin": "skill-creator",
+      "source": "plugins/skill-creator/skills/skill-creator/SKILL.md"
+    },
+    {
+      "skill": "telegram-access",
+      "kind": "skill",
+      "plugin": "telegram",
+      "source": "external_plugins/telegram/skills/access/SKILL.md"
+    },
+    {
+      "skill": "telegram-configure",
+      "kind": "skill",
+      "plugin": "telegram",
+      "source": "external_plugins/telegram/skills/configure/SKILL.md"
+    }
+  ]
+}
