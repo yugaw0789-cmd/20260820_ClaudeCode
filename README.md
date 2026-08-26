@@ -4,10 +4,10 @@
 
 ## 使い方
 
-`index.html` をブラウザで開くだけです。ローカルサーバーで確認する場合:
+`public/index.html` をブラウザで開くだけです。ローカルサーバーで確認する場合:
 
 ```sh
-python3 -m http.server 8000
+python3 -m http.server 8000 --directory public
 # http://localhost:8000 を開く
 ```
 
@@ -42,11 +42,29 @@ python3 -m http.server 8000
 
 | ファイル | 内容 |
 | --- | --- |
-| `index.html` | 画面のマークアップ |
-| `style.css` | スタイル（配色・リング・レスポンシブ） |
-| `script.js` | タイマー / ストップウォッチ / 時計 / 電卓のロジック |
+| `public/index.html` | 画面のマークアップ |
+| `public/style.css` | スタイル（配色・リング・レスポンシブ） |
+| `public/script.js` | タイマー / ストップウォッチ / 時計 / 電卓のロジック |
+| `wrangler.jsonc` | Cloudflare Workers への公開設定 |
+
+配信するファイルは `public/` にまとめてあります。Cloudflare Workers の静的アセットは
+Pages と違って `.git` や `node_modules` を自動では除外しないため、リポジトリ直下ではなく
+`public/` だけを公開対象にしています。
 
 残り時間は終了時刻（`performance.now()` 基準）から計算しているため、タブを裏に回して更新が間引かれても、戻ったときに正しい残り時間に追いつきます。
+
+## Cloudflare Workers への公開
+
+`wrangler.jsonc` を用意済みなので、Cloudflare にログインした環境で次を実行するだけで公開できます。
+
+```sh
+npx wrangler login      # 初回のみ（ブラウザで認証）
+npx wrangler deploy
+```
+
+公開URLは `https://simple-timer-tools.<アカウントのサブドメイン>.workers.dev` になります。
+
+ビルド不要の静的サイトなので、Worker スクリプト（`main`）は設定していません。
 
 ## テスト
 
