@@ -15,6 +15,7 @@
     <button class="mode-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="timer-panel" data-mode="timer">タイマー</button>
     <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="stopwatch-panel" data-mode="stopwatch">ストップウォッチ</button>
     <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="clock-panel" data-mode="clock">時計</button>
+    <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-panel" data-mode="calc">電卓</button>
   </div>
 
   <section id="timer-panel" class="mode-panel" role="tabpanel">
@@ -80,6 +81,40 @@
       <time id="clockDate" class="clock-date">----</time>
     </div>
     <p class="hint">端末のローカル時刻を表示しています</p>
+  </section>
+
+  <section id="calc-panel" class="mode-panel" role="tabpanel" hidden>
+    <div class="calc-readout">
+      <span id="calcExpression" class="calc-expression"></span>
+      <output id="calcDisplay" class="calc-display" aria-live="polite">0</output>
+    </div>
+    <div class="keypad">
+      <button class="key key-fn" type="button" data-action="clear">C</button>
+      <button class="key key-fn" type="button" data-action="backspace" aria-label="1文字削除">←</button>
+      <button class="key key-fn" type="button" data-action="percent">%</button>
+      <button class="key key-op" type="button" data-op="/" aria-label="割る">÷</button>
+
+      <button class="key" type="button" data-digit="7">7</button>
+      <button class="key" type="button" data-digit="8">8</button>
+      <button class="key" type="button" data-digit="9">9</button>
+      <button class="key key-op" type="button" data-op="*" aria-label="掛ける">×</button>
+
+      <button class="key" type="button" data-digit="4">4</button>
+      <button class="key" type="button" data-digit="5">5</button>
+      <button class="key" type="button" data-digit="6">6</button>
+      <button class="key key-op" type="button" data-op="-" aria-label="引く">−</button>
+
+      <button class="key" type="button" data-digit="1">1</button>
+      <button class="key" type="button" data-digit="2">2</button>
+      <button class="key" type="button" data-digit="3">3</button>
+      <button class="key key-op" type="button" data-op="+" aria-label="足す">+</button>
+
+      <button class="key key-fn" type="button" data-action="negate" aria-label="符号を反転">±</button>
+      <button class="key" type="button" data-digit="0">0</button>
+      <button class="key" type="button" data-action="decimal">.</button>
+      <button class="key key-equals" type="button" data-action="equals" aria-label="計算する">=</button>
+    </div>
+    <p class="hint">数字キー・演算子キー、Enter で計算、Backspace で 1 文字削除、Esc でクリア</p>
   </section>
 </main>
 

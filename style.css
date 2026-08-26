@@ -53,8 +53,8 @@ body {
 }
 
 .mode-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 4px;
   padding: 4px;
   margin: 0 0 22px;
@@ -63,7 +63,8 @@ body {
 }
 
 .mode-tab {
-  padding: 8px 4px;
+  flex: 1 1 auto;
+  padding: 8px 10px;
   color: var(--muted);
   background: transparent;
   border: 0;
@@ -282,3 +283,77 @@ body.finished .display { color: var(--danger); animation: blink 1s steps(2, star
 }
 
 .laps time { color: var(--fg); }
+
+/* ---- calculator ---- */
+.calc-readout {
+  display: flex;
+  min-height: 96px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: var(--bg);
+  border: 1px solid var(--ring-bg);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.calc-expression {
+  min-height: 1em;
+  color: var(--muted);
+  font-size: .85rem;
+  font-variant-numeric: tabular-nums;
+  word-break: break-all;
+}
+
+.calc-display {
+  font-size: 2.1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+  word-break: break-all;
+}
+
+.calc-display.is-long { font-size: 1.5rem; }
+.calc-display.is-error { color: var(--danger); }
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.key {
+  padding: 15px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--ring-bg);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.key:hover { border-color: var(--accent); }
+.key:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.key:active { transform: translateY(1px); }
+
+.key-fn { color: var(--muted); }
+.key-op { color: var(--accent); }
+.key-op.is-active { color: #06210f; background: var(--accent); border-color: var(--accent); }
+
+.key-equals {
+  color: #06210f;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.key-equals:hover { background: var(--accent-dim); border-color: var(--accent-dim); }
+
+@media (prefers-reduced-motion: reduce) {
+  .key:active { transform: none; }
+}
